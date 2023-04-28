@@ -44,6 +44,6 @@ app.on('ready', () => {
     //carga el url a la ventana, cuando es un archivo local
     //se usa el protocolo file
     //__dirname devuelve el nombre de la ruta actual del directorio
-    win.loadURL(`file://${__dirname}/index.html`);
+    win.loadURL(`file://${__dirname}/renderer/index.html`);
 });
 
