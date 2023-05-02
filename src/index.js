@@ -1,7 +1,17 @@
 "use strict";
 
 //objeto app es el que maneja el ciclo de vida de la aplicacion
-const { app, BrowserWindow } = require("electron");
+import { app, BrowserWindow } from "electron";
+//importamos el modulo de reloadlive compile
+import devtools from './devTools';
+
+
+//queremos que se ejecute en el entorno de desarrollo solamente
+//validamos si es o no ese entorno
+if (process.env.NODE_ENV === 'development') {
+    devtools();
+}
+
 
 //console.dir(app); para ver las propiedades de app
 
