@@ -5,10 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hola mundo</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
     <link rel="stylesheet" href="../assets/css/photon.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.7.570/pdf.min.js"></script>
     <script src="frontend.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./minpdf.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <div id="overlay" class="hidden"></div>
@@ -25,33 +24,9 @@
                   placeholder="Busca una imagen"
                 />
               </li>
-              <li class="list-group-item">
-                <img
-                  class="img media-object pull-left"
-                  src="../assets/img/img1.jpg"
-                  width="32"
-                  height="32"
-                />
-                <div class="media-body">
-                  <strong>Imagen 1</strong>
-                  <p>2 mb</p>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <img
-                  class="img media-object pull-left"
-                  src="../assets/img/img2.png"
-                  width="32"
-                  height="32"
-                />
-                <div class="media-body">
-                  <strong>Imagen 1</strong>
-                  <p>2 mb</p>
-                </div>
-              </li>
-
             </ul>
           </div>
+          <!-- panel -->
           <div class="pane">
             <div class="image-view full-height">
               <header class="toolbar toolbar-header image-toolbar">
@@ -91,6 +66,7 @@
                     <option value="charmes">charmes</option>
                     <option value="clarendon">clarendon</option>
                     <option value="crema">crema</option>
+                    <option value="dogpatch">dogpatch</option>
                     <option value="earlybird">earlybird</option>
                     <option value="gingham">gingham</option>
                     <option value="ginza">ginza</option>
@@ -109,26 +85,13 @@
                     <option value="nashville">nashville</option>
                     <option value="perpetua">perpetua</option>
                     <option value="reyes">reyes</option>
-                    <option value="rise">rise</option>
-                    <option value="sierra">sierra</option>
-                    <option value="skyline">skyline</option>
-                    <option value="slumber">slumber</option>
-                    <option value="stinson">stinson</option>
-                    <option value="sutro">sutro</option>
-                    <option value="toaster">toaster</option>
-                    <option value="valencia">valencia</option>
-                    <option value="vesper">vesper</option>
-                    <option value="walden">walden</option>
-                    <option value="willow">willow</option>
-                    <option value="xpro2">xpro2</option>
                   </select>
                   <label class="pull-right filter-label">Filtros: </label>
                 </div>
               </header>
               <div class="image-container">
-                <img id="image-displayed" src="" data-original="" alt="" />
-              <p>Texto aqui</p>
-            </div>
+                <img id="image-displayed" src="../assets/img/img1.jpg" data-original="" alt="" />
+              </div>
             </div>
           </div>
         </div>
