@@ -55,14 +55,23 @@ function searchImageEvent() {
         if (fileName.match(regex)) {
           //si es asi lo hacemos visible
           thumbs[i].parentNode.classList.remove("hidden");
+          selectFirstImage();
         } else {
           //sino agregamos la clase hidden para hacerla invisible
           thumbs[i].parentNode.classList.add("hidden");
         }
       }
-
-      selectFirstImage();
+    } else {
+       //buscar todos los nodos ocultos que tienen class li y hidden
+       const hidden = document.querySelectorAll('li.hidden')
+      
+      for (let i = 0, length1 = hidden.length; i < length1; i++) {
+        //itera sobre los nodos hidden
+        //accedemos a la class de cada nodo
+        hidden[i].classList.remove("hidden")
+      }
     }
+
   });
 }
 
