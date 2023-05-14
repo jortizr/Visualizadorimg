@@ -1,11 +1,13 @@
 //url para convertir el url en un array
 import url from "url";
 import path from "path";
+import applyFilter from "./filters";
 
 window.addEventListener("load", () => {
   //document.getElementById('mensaje').innerHTML = 'Este es un mensaje insertado por JS'
   addImageEvents();
   searchImageEvent();
+  selectEvent();
 });
 
 function addImageEvents() {
@@ -19,15 +21,31 @@ function addImageEvents() {
   }
 }
 
+//funcion para seleccionar y aplicar filtro
+function selectEvent() {
+  //buscar el elemento con id filter
+  const select = document.getElementById('filters')
+  
+  select.addEventListener('change', function () {
+    applyFilter(this.value, document.getElementById('image-displayed'));
+  })
+}
+
 //funcion que cambia las imagenes y envia el id del elemento seleccionado
 function changeImage(node) {
-  document.querySelector("li.selected").classList.remove("selected");
-  //ahora le pasamos el selected al elemento seleccionado
-  node.classList.add("selected");
   //cambiamos la imagen del panel visor
   const image = document.getElementById("image-displayed");
-  image.src = node.querySelector("img").src;
-  image.dataset.original = image.src;
+
+  if(node){
+    document.querySelector("li.selected").classList.remove("selected");
+  //ahora le pasamos el selected al elemento seleccionado
+    node.classList.add("selected");
+
+    image.src = node.querySelector("img").src;
+    image.dataset.original = image.src;
+  } else {
+    image.dataset.original = "";
+  }
 }
 
 //creamos la funcion que escucha el evento keyup de input de search
@@ -39,7 +57,6 @@ function searchImageEvent() {
     //creamos una expresion regular para validar si lo del input cumple
     //con la condicion //this.value valor de la caja de texto
     const regex = new RegExp(this.value.toLowerCase(), "gi");
-    console.log(this.value.length);
     //ejecutamos el evento si esto es mayor que 0
     if (this.value.length > 0) {
       //si las imagenes de la vista cumplen la condicion
@@ -55,12 +72,14 @@ function searchImageEvent() {
         if (fileName.match(regex)) {
           //si es asi lo hacemos visible
           thumbs[i].parentNode.classList.remove("hidden");
-          selectFirstImage();
+          
         } else {
           //sino agregamos la clase hidden para hacerla invisible
           thumbs[i].parentNode.classList.add("hidden");
         }
       }
+      selectFirstImage();
+
     } else {
        //buscar todos los nodos ocultos que tienen class li y hidden
        const hidden = document.querySelectorAll('li.hidden')
