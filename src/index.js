@@ -1,7 +1,7 @@
 'use strict'
 
 // objeto app es el que maneja el ciclo de vida de la aplicacion
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 // importamos el modulo de reloadlive compile
 import devtools from './devTools'
 
@@ -54,5 +54,13 @@ app.on('ready', () => {
   // se usa el protocolo file
   // __dirname devuelve el nombre de la ruta actual del directorio
     win.loadURL(`file://${__dirname}/renderer/index.html`)
-    win.webContents.openDevTools();
+  win.webContents.openDevTools();
+
+  ipcMain.on('ping', (event, arg) => {
+    console.log(`se recibio ping - ${arg}`)
+    event.sender.send('pong', new Date())
+  })
 })
+
+
+

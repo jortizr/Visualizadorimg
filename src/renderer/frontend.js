@@ -2,13 +2,26 @@
 import url from "url";
 import path from "path";
 import applyFilter from "./filters";
+import {setIpc, sendIpc} from './ipcRendererEvents'
 
 window.addEventListener("load", () => {
   //document.getElementById('mensaje').innerHTML = 'Este es un mensaje insertado por JS'
+  setIpc()//configura el evento pong
   addImageEvents();
   searchImageEvent();
   selectEvent();
+  openDirectory();
 });
+
+//funcion para abrir el directorio
+function openDirectory() {
+  //abrir directorio
+  const openDirectory = document.getElementById('open-directory')
+  openDirectory.addEventListener('click', () => {
+    sendIpc()
+  })
+}
+
 
 function addImageEvents() {
   //obtiene todos los elementos a alterar
